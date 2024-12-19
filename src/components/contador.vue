@@ -45,6 +45,10 @@ h2 {
   color: #8a93de;
   box-shadow: 0px 0px 10px 0px #8a93de;
 }
+p {
+  color: #8a93de;
+  font-size: 20px;
+}
 button {
   background-color: #000f98;
   padding: 10px 20px;
