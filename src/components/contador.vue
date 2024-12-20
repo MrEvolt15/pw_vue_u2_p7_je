@@ -1,13 +1,13 @@
 <template>
-  <h2>{{ titulo }}</h2>
-  <p>{{ numero }} <sup>2</sup>= {{ calcularCuadradoComputed }}</p>
-  <p>{{ numero }} <sup>2</sup>= {{ calcularCuadradoComputed }}</p>
-  <p>{{ numero }} <sup>2</sup>= {{ calcularCuadradoComputed }}</p>
-  <p>{{ numero }} <sup>2</sup>= {{ calcularCuadradoComputed }}</p>
+  <h2>{{ titulo }}:{{valor2}}</h2>
+  <p>{{ valor }} <sup>2</sup>= {{ calcularCuadradoComputed }}</p>
   <p>{{ numero }} <sup>2</sup>= {{ calcularCuadradoComputed }}</p>
   <div>
     <button v-on:click="incrementar()">+1</button>
     <button @click="decrementar()">-1</button>
+  </div>
+  <div v-if="esVerdad">
+    <h1>FELIZ NAVIDAD!!!</h1>
   </div>
 </template>
 
@@ -15,8 +15,8 @@
 export default {
   data() {
     return {
-      numero: 10,
-      titulo: "Contador",
+      numero: this.valor,
+      
     };
   },
   methods: {
@@ -36,6 +36,37 @@ export default {
         console.log("Método calcularCuadradoComputed");
         return this.numero * this.numero;
     }
+  },
+  //primera forma de declaracion de un props
+  //props:["titulo","valor"]
+  //segunda forma de declaracion de un props
+  props:{
+    titulo:{
+      type: String,
+      required: false,
+      default: "Titulo",
+      validator(value){
+        return value.includes('a');
+      }
+    },
+
+    valor: Number,
+    valor2:{
+      type: Number,
+      required: false,
+      default: 78,
+      validator(value){
+        //programo mi validacion bajo mi ciriterio y retorno true cuando es valido para mi y false cuando no
+        return value <= 77;
+      }
+    },
+    esVerdad:{
+      type: Boolean,
+      required: true
+    },
+    arreglo: Array,
+    fecha: Date,
+    objeto: Object,
   }
 };
 </script>
